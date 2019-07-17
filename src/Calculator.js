@@ -179,13 +179,15 @@ class Calculator extends Component {
 
         return (
             <div className="calculator">
-                <Input
-                    className="input"
-                    placeholder={this.state.inputValue}
-                    value={this.state.equation}
-                />
-                <br />
-                {buttonList}
+                <div className="inlayer">
+                    <Input
+                        className="input"
+                        placeholder={this.state.inputValue}
+                        value={this.state.equation}
+                    />
+                    <br />
+                    {buttonList}
+                </div>
             </div>
         );
     }

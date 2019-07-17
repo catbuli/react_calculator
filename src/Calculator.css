@@ -10,7 +10,14 @@
 .calculator{
     width: 280px;
     margin: 0 auto;
-    height: 410px;
-    background-color: beige;
+    background-color: #b6b6b6;
     border-radius: 10px;
+}
+.inlayer{
+    border-radius: 10px;
+    padding-top: 30px;
+    margin-top: 20px;
+    width: 280px;
+    height: 450px;
+    box-shadow:5px 5px 5px #7c7c7c ;
 }
