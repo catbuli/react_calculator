@@ -5,6 +5,7 @@
  * @returns {Array} - 中缀表达式数组 
  */
 function stringToArray(str) {
+    //console.log("|",str,"| stringToArray");
     if (str !== "" && str !== undefined) {
         let data = str.split('')
         var flag = ""
@@ -21,6 +22,8 @@ function stringToArray(str) {
         arr.push(parseFloat(flag))
         console.log("中缀表达式字符串:",arr.join(" "));
         return arr
+    }else{
+        return []
     }
 }
 
@@ -31,7 +34,8 @@ function stringToArray(str) {
  * @returns {String} - 后缀表达式字符串
  */
 function infixToSuffix(arr) {
-    if (arr !== undefined) {
+    //console.log("|",arr,"| infixToSuffix");
+    if (arr.length>0) {
         let str = ""
         let operator = []
         arr.forEach((a) => {
@@ -61,6 +65,8 @@ function infixToSuffix(arr) {
         }
         console.log("后缀表达式字符串:",str);
         return str;
+    }else{
+        return ""
     }
 }
 
@@ -72,7 +78,8 @@ function infixToSuffix(arr) {
  * @returns {Float} - 结果数据
  */
 function suffixResult(str) {
-    if (str !== undefined) {
+    //console.log("|",str,"| suffixResult");
+    if (str !== "") {
         let data = str.split(' ');
         let stack = []
         data.forEach((data) => {
@@ -102,6 +109,8 @@ function suffixResult(str) {
         let result = parseFloat(stack.pop())
         console.log("运算结果:",result);
         return result.toString()
+    }else{
+        return ""
     }
 }
 /**
