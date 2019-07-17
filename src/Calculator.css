@@ -8,16 +8,16 @@
     width: 260px;
 }
 .calculator{
-    width: 280px;
+    width: 300px;
     margin: 0 auto;
     background-color: #b6b6b6;
     border-radius: 10px;
+    box-shadow:5px 5px 5px #7c7c7c ;
 }
 .inlayer{
-    border-radius: 10px;
+    margin: 0 auto;
     padding-top: 30px;
     margin-top: 20px;
     width: 280px;
     height: 450px;
-    box-shadow:5px 5px 5px #7c7c7c ;
 }
