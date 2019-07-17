@@ -74,7 +74,7 @@ class Calculator extends Component {
                 <div className="inlayer">
                     <Input
                         className="input"
-                        placeholder={this.state.inputValue}
+                        placeholder="计算器"
                         value={this.state.equation}
                     />
                     <br />

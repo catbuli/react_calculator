@@ -1,7 +1,6 @@
 import { CHANGE_INPUT, CLEAR_INPUT, RUN_INPUT ,BACK_SPACE} from './actionTypes'
 
 const defaultState = {
-    inputValue: "计算器",
     equation: "",
 }
 export default (state = defaultState, action) => {

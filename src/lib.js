@@ -20,9 +20,9 @@ function stringToArray(str) {
             }
         })
         arr.push(parseFloat(flag))
-        console.log("中缀表达式字符串:",arr.join(" "));
+        console.log("中缀表达式字符串:", arr.join(" "));
         return arr
-    }else{
+    } else {
         return []
     }
 }
@@ -35,7 +35,7 @@ function stringToArray(str) {
  */
 function infixToSuffix(arr) {
     //console.log("|",arr,"| infixToSuffix");
-    if (arr.length>0) {
+    if (arr.length > 0) {
         let str = ""
         let operator = []
         arr.forEach((a) => {
@@ -46,8 +46,12 @@ function infixToSuffix(arr) {
                     operator.push(a)
                 } else {
                     let test = operator.length
-                    for (let index = 0; index <= test; index++) {
+                    for (let index = 0; index <= test + 1; index++) {
                         let tmp = operator.pop()
+                        if(tmp===undefined){
+                            operator.push(a)
+                            break;
+                        }
                         operator.push(tmp)
                         let flag = operatorCompare(a, tmp)
                         if (flag && operator.length !== 0) {
@@ -56,6 +60,7 @@ function infixToSuffix(arr) {
                             operator.push(a)
                             break;
                         }
+
                     }
                 }
             }
@@ -63,9 +68,9 @@ function infixToSuffix(arr) {
         while (operator.length !== 0) {
             str = str + operator.pop() + " ";
         }
-        console.log("后缀表达式字符串:",str);
+        console.log("后缀表达式字符串:", str);
         return str;
-    }else{
+    } else {
         return ""
     }
 }
@@ -107,41 +112,23 @@ function suffixResult(str) {
             }
         })
         let result = parseFloat(stack.pop())
-        console.log("运算结果:",result);
+        console.log("运算结果:", result);
         return result.toString()
-    }else{
+    } else {
         return ""
     }
 }
 /**
- * 比较传入的连个符号的优先级
+ * 比较传入的两个符号的优先级
  *
  * @param {String} a
  * @param {String} b
  * @returns {Boolean} - 返回true a<=b  返回false a>b
  */
 function operatorCompare(a, b) {
-    var add = "+", minu = "-", multiply = "*", divide = "/"
-    var flaga;
-    var flagb;
-    switch (a) {
-        case add: flaga = 1; break;
-        case minu: flaga = 1; break;
-        case multiply: flaga = 2; break;
-        case divide: flaga = 2; break;
-        default:
-            break;
-    }
-    switch (b) {
-        case add: flagb = 1; break;
-        case minu: flagb = 1; break;
-        case multiply: flagb = 2; break;
-        case divide: flagb = 2; break;
-        default:
-            break;
-    }
-    return flaga <= flagb
+    let test1 = (a === "+" || a === "-") ? 1 : 2
+    let test2 = (b === "+" || b === "-") ? 1 : 2
+    return test1 <= test2
 }
-
 
 export { stringToArray, infixToSuffix, suffixResult, operatorCompare }
