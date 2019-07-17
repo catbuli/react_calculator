@@ -44,10 +44,9 @@ class Calculator extends Component {
                 break;
             }
             case "<-": {
-                action = backSpaceAction(this.backSpace(this.state.equation));
+                action = backSpaceAction(this.backSpace());
                 break;
             }
-
             default:
                 action = inputAction(count)
                 break;
@@ -55,7 +54,8 @@ class Calculator extends Component {
         store.dispatch(action)
         this.storeChange()
     }
-    backSpace(str) {
+    backSpace() {
+        let str = this.state.equation;
         str = str.substring(0, str.length - 1);
         return str;
     }

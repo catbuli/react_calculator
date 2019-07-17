@@ -1,8 +1,8 @@
 /**
  *  将公式字符串转换为数组 将公式中的数组转换为Number 
  *
- * @param {string} str - 传入的公式字符串
- * @returns {Array} - 返回的数组 
+ * @param {string} str - 公式字符串
+ * @returns {Array} - 中缀表达式数组 
  */
 function stringToArray(str) {
     if (str !== "" && str !== undefined) {
@@ -26,8 +26,8 @@ function stringToArray(str) {
 /**
  * 将stringToArray方法中生成的数组 转换为后缀表达式
  *
- * @param {arr} data
- * @returns
+ * @param {Array} arr - 中缀表达式数组
+ * @returns {String} - 后缀表达式字符串
  */
 function infixToSuffix(arr) {
     if (arr !== undefined) {
@@ -65,10 +65,10 @@ function infixToSuffix(arr) {
 
 
 /**
+ * 计算后缀表达式
  *
- *
- * @param {*} str
- * @returns
+ * @param {String} str - 后缀表达式字符串
+ * @returns {Float} - 结果数据
  */
 function suffixResult(str) {
     if (str !== undefined) {
@@ -98,7 +98,7 @@ function suffixResult(str) {
                 }
             }
         })
-        return result.pop()
+        return parseFloat(result.pop())
     }
 }
 /**
