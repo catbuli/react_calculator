@@ -19,6 +19,7 @@ function stringToArray(str) {
             }
         })
         arr.push(parseFloat(flag))
+        console.log("中缀表达式字符串:",arr.join(" "));
         return arr
     }
 }
@@ -58,7 +59,7 @@ function infixToSuffix(arr) {
         while (operator.length !== 0) {
             str = str + operator.pop() + " ";
         }
-
+        console.log("后缀表达式字符串:",str);
         return str;
     }
 }
@@ -98,15 +99,17 @@ function suffixResult(str) {
                 }
             }
         })
-        return parseFloat(result.pop())
+        let test = parseFloat(result.pop())
+        console.log("运算结果:",test);
+        return test
     }
 }
 /**
+ * 比较传入的连个符号的优先级
  *
- *
- * @param {*} a
- * @param {*} b
- * @returns
+ * @param {String} a
+ * @param {String} b
+ * @returns {Boolean} - 返回true a<=b  返回false a>b
  */
 function operatorCompare(a, b) {
     var add = "+", minu = "-", multiply = "*", divide = "/"
