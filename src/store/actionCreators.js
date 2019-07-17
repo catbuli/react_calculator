@@ -14,8 +14,7 @@ export const runAction = (result)=>({
     result
 })
 
-export const backSpaceAction = (result)=>({
-    type: BACK_SPACE,
-    result
+export const backSpaceAction = ()=>({
+    type: BACK_SPACE
 })
 

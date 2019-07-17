@@ -74,34 +74,34 @@ function infixToSuffix(arr) {
 function suffixResult(str) {
     if (str !== undefined) {
         let data = str.split(' ');
-        let result = []
+        let stack = []
         data.forEach((data) => {
             if (!isNaN(parseFloat(data))) {
-                result.push(parseFloat(data))
+                stack.push(parseFloat(data))
             } else {
                 switch (data) {
                     case "+":
-                        result.push(parseFloat(result.pop()) + parseFloat(result.pop()))
+                        stack.push(parseFloat(stack.pop()) + parseFloat(stack.pop()))
                         break;
                     case "-":
-                        let a = parseFloat(result.pop()); let b = parseFloat(result.pop())
-                        result.push(b - a);
+                        let a = parseFloat(stack.pop()); let b = parseFloat(stack.pop())
+                        stack.push(b - a);
                         break;
                     case "*":
-                        result.push(parseFloat(result.pop()) * parseFloat(result.pop()))
+                        stack.push(parseFloat(stack.pop()) * parseFloat(stack.pop()))
                         break;
                     case "/":
-                        let aa = parseFloat(result.pop()); let bb = parseFloat(result.pop())
-                        result.push(bb / aa);
+                        let aa = parseFloat(stack.pop()); let bb = parseFloat(stack.pop())
+                        stack.push(bb / aa);
                         break;
                     default:
                         break;
                 }
             }
         })
-        let test = parseFloat(result.pop())
-        console.log("运算结果:",test);
-        return test
+        let result = parseFloat(stack.pop())
+        console.log("运算结果:",result);
+        return result.toString()
     }
 }
 /**

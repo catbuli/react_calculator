@@ -20,7 +20,7 @@ export default (state = defaultState, action) => {
         return newState
     } else if (action.type === BACK_SPACE) {
         let newState = JSON.parse(JSON.stringify(state))
-        newState.equation = action.result
+        newState.equation = newState.equation.substring(0, newState.equation.length - 1);
         return newState
     }
     return state
