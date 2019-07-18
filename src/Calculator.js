@@ -1,31 +1,12 @@
 import React, { Component } from 'react';
 import { Input, Button } from 'antd';
-import { stringToArray, infixToSuffix,suffixResult } from "./lib"
+import { stringToArray, infixToSuffix, suffixResult } from "./lib"
 import { inputAction, claerAction, runAction, backSpaceAction } from './store/actionCreators'
 import store from './store'
 import 'antd/dist/antd.css'
 import './Calculator.css'
+import { KEY } from './KEY'
 
-const KEY = [
-    { 'value': '7' },
-    { 'value': '8' },
-    { 'value': '9' },
-    { 'value': '+' },
-    { 'value': '4' },
-    { 'value': '5' },
-    { 'value': '6' },
-    { 'value': '-' },
-    { 'value': '1' },
-    { 'value': '2' },
-    { 'value': '3' },
-    { 'value': '*' },
-    { 'value': '.' },
-    { 'value': '0' },
-    { 'value': '=' },
-    { 'value': '/' },
-    { 'value': 'C' },
-    { 'value': '<-' },
-]
 class Calculator extends Component {
     constructor(props) {
         super(props);
@@ -58,13 +39,15 @@ class Calculator extends Component {
     render() {
         var buttonList = [];
         KEY.forEach((value, index) => {
+            console.log(value.backgroundColor);
+
             if ((index + 1) % 4 === 0) {
                 buttonList.push(
-                    <span key={index}><Button className="button" onClick={this.input.bind(this, value.value)}>{value.value}</Button><br /></span>
+                    <span key={index}><Button className="button" style={value.style} onClick={this.input.bind(this, value.value)}>{value.value}</Button><br /></span>
                 )
             } else {
                 buttonList.push(
-                    <span key={index}><Button className="button" onClick={this.input.bind(this, value.value)}>{value.value}</Button></span>
+                    <span key={index}><Button className="button" style={value.style} onClick={this.input.bind(this, value.value)}>{value.value}</Button></span>
                 )
             }
         })

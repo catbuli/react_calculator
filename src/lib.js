@@ -4,8 +4,11 @@
  * @param {string} str - 公式字符串
  * @returns {Array} - 中缀表达式数组 
  */
+var start = null;//起始时间
+var end = null;  //结束时间
 function stringToArray(str) {
-    //console.log("|",str,"| stringToArray");
+    //console.log("|",str,"| sÎtringToArray");
+    start = new Date().getTime();
     if (str !== "" && str !== undefined) {
         let data = str.split('')
         var flag = ""
@@ -48,7 +51,7 @@ function infixToSuffix(arr) {
                     let test = operator.length
                     for (let index = 0; index <= test + 1; index++) {
                         let tmp = operator.pop()
-                        if(tmp===undefined){
+                        if (tmp === undefined) {
                             operator.push(a)
                             break;
                         }
@@ -60,7 +63,6 @@ function infixToSuffix(arr) {
                             operator.push(a)
                             break;
                         }
-
                     }
                 }
             }
@@ -112,6 +114,8 @@ function suffixResult(str) {
             }
         })
         let result = parseFloat(stack.pop())
+        end = new Date().getTime();
+        console.log("运算时间: " + (end - start) + "ms");
         console.log("运算结果:", result);
         return result.toString()
     } else {
