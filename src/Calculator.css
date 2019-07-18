@@ -7,10 +7,13 @@
 
 .button:active{
     background-color: #d8d8d8;
+    transition:0.5s;
 }
 .button:hover{
     background-color: #d8d8d8;
+    transition:0.1s;
 }
+
 .input{
     height: 50px;
     width: 100%;
