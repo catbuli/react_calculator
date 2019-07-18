@@ -4,12 +4,18 @@
     border:0px;
     border-radius: 0px;
 }
+
+.button:active{
+    background-color: #d8d8d8;
+}
+.button:hover{
+    background-color: #d8d8d8;
+}
 .input{
     height: 50px;
     width: 100%;
     border-radius: 0px;
-    border: 1px #b6b6b6;
-    
+    border: 0px;
 }
 .calculator{
     position: relative;

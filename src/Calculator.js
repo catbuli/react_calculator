@@ -39,8 +39,6 @@ class Calculator extends Component {
     render() {
         var buttonList = [];
         KEY.forEach((value, index) => {
-            console.log(value.backgroundColor);
-
             if ((index + 1) % 4 === 0) {
                 buttonList.push(
                     <span key={index}><Button className="button" style={value.style} onClick={this.input.bind(this, value.value)}>{value.value}</Button><br /></span>
