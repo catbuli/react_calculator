@@ -39,14 +39,11 @@ class Calculator extends Component {
     render() {
         var buttonList = [];
         KEY.forEach((value, index) => {
+            buttonList.push(
+                <span key={index}><Button className="button" style={value.style} onClick={this.input.bind(this, value.value)}>{value.value}</Button></span>
+            )
             if ((index + 1) % 4 === 0) {
-                buttonList.push(
-                    <span key={index}><Button className="button" style={value.style} onClick={this.input.bind(this, value.value)}>{value.value}</Button><br /></span>
-                )
-            } else {
-                buttonList.push(
-                    <span key={index}><Button className="button" style={value.style} onClick={this.input.bind(this, value.value)}>{value.value}</Button></span>
-                )
+                buttonList.push(<br key={index+value}/>)
             }
         })
 
