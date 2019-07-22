@@ -13,9 +13,8 @@ function stringToArray(str) {
         let data = str.split('');
         var flag = "";
         let arr = [];
-        console.log(data.length);
         data.forEach((tmp, index) => {
-            if (isNaN(tmp)) {
+            if (isNaN(tmp) && tmp !== '.') {
                 //如果是符号
                 if (flag !== "") {
                     arr.push(parseFloat(flag));
@@ -39,6 +38,10 @@ function stringToArray(str) {
     }
 }
 
+
+
+
+
 /**
  * 将stringToArray方法中生成的数组 转换为后缀表达式
  *
@@ -50,32 +53,53 @@ function infixToSuffix(arr) {
     if (arr.length > 0) {
         let str = ""
         let operator = []
-        arr.forEach((a) => {
-            if (Number(a)) {
-                str = str + a + " ";
-            } else {
-                if (operator.length === 0) {
-                    operator.push(a)
+
+        arr.forEach((val) => {
+            if (isNaN(val)) {
+                //如果是符号
+                if (operator.length === 0 || val === "(") {
+                    operator.push(val)
                 } else {
-                    let test = operator.length
-                    for (let index = 0; index <= test + 1; index++) {
-                        let tmp = operator.pop()
-                        if (tmp === undefined) {
-                            operator.push(a)
-                            break;
+                    if (val === ")") {
+                        let operatorLength = operator.length;
+                        for (let index = 0; index < operatorLength; index++) {
+                            let flag = operator.pop();
+                            if (flag === "(") {
+                                break;
+                            } else {
+                                str = str + flag + " ";
+                            }
                         }
-                        operator.push(tmp)
-                        let flag = operatorCompare(a, tmp)
-                        if (flag && operator.length !== 0) {
-                            str = str + operator.pop() + " ";
-                        } else {
-                            operator.push(a)
-                            break;
+                    } else {
+                        let operatorLength = operator.length;
+                        for (let index = 0; index <= operatorLength + 1; index++) {
+                            let tmp = operator.pop()
+                            if (tmp === undefined) {
+                                operator.push(val)
+                                break;
+                            } else if (tmp === "(") {
+                                operator.push(tmp)
+                                operator.push(val)
+                                break;
+                            } else {
+                                let flag = operatorCompare(val, tmp)
+                                if (flag) {
+                                    str = str + tmp + " ";
+                                } else {
+                                    operator.push(tmp)
+                                    operator.push(val)
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
+            } else {
+                //如果是数字
+                str = str + val + " ";
             }
         })
+
         while (operator.length !== 0) {
             str = str + operator.pop() + " ";
         }
@@ -85,6 +109,11 @@ function infixToSuffix(arr) {
         return ""
     }
 }
+
+
+
+
+
 
 
 /**
