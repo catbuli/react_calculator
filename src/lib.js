@@ -10,23 +10,32 @@ function stringToArray(str) {
     //console.log("|",str,"| sÎtringToArray");
     start = new Date().getTime();
     if (str !== "" && str !== undefined) {
-        let data = str.split('')
-        var flag = ""
+        let data = str.split('');
+        var flag = "";
         let arr = [];
-        data.forEach((data) => {
-            if (data !== "+" && data !== "-" && data !== "*" && data !== "/") {
-                flag = flag + data;
+        console.log(data.length);
+        data.forEach((tmp, index) => {
+            if (isNaN(tmp)) {
+                //如果是符号
+                if (flag !== "") {
+                    arr.push(parseFloat(flag));
+                    arr.push(tmp);
+                    flag = "";
+                } else {
+                    arr.push(tmp);
+                }
             } else {
-                arr.push(parseFloat(flag))
-                arr.push(data)
-                flag = ""
+                //如果是数字
+                flag = flag + tmp;
+                if (index >= data.length - 1) {
+                    arr.push(parseFloat(flag));
+                }
             }
         })
-        arr.push(parseFloat(flag))
         console.log("中缀表达式字符串:", arr.join(" "));
-        return arr
+        return arr;
     } else {
-        return []
+        return [];
     }
 }
 
